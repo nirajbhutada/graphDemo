@@ -1,0 +1,275 @@
+<html>
+  <head>
+     <meta name="viewport" content= "width=device-width, user-scalable=no">
+     <link rel="shortcut icon" href="/graphDemo/images/family-logo1.png" type="image/x-icon">
+    <!-- <link href="https://cdn.syncfusion.com/ej2/material.css" rel="stylesheet">  -->
+    <style type="text/css">
+      html, body {
+          margin: 0px;
+          padding: 0px;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+      }
+
+      #tree {
+          width: 100%;
+          height: 100%;
+      }
+      @font-face {
+          font-family: Meta-Bold;
+          src: url("/graphDemo/fonts/MetaWebPro-Bold.eot?#iefix") format("embedded-opentype"), url("/graphDemo/fonts/MetaWebPro-Bold.woff") format("woff");
+          font-weight: bold;
+          font-style: normal;
+      }
+
+      @font-face {
+          font-family: Meta-Norm;
+          src: url("/graphDemo/fonts/MetaWebPro-Normal.eot?#iefix") format("embedded-opentype"), url("/graphDemo/fonts/MetaWebPro-Normal.woff") format("woff");
+          font-weight: normal;
+          font-style: normal;
+      }
+
+      @font-face {
+          font-family: Meta-Medium;
+          src: url("/graphDemo/fonts/MetaWebPro-MediumMedium.eot?#iefix") format("embedded-opentype"), url("/graphDemo/fonts/MetaWebPro-Medium.woff") format("woff");
+          font-weight: normal;
+          font-style: normal;
+      }
+
+      @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+      @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+      @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+      @-webkit-keyframes rotation {
+        from {
+          -webkit-transform: rotate(0deg);
+        }
+
+        to {
+          -webkit-transform: rotate(359deg);
+        }
+      }
+
+      @keyframes "pulse" {
+          0% {
+              -webkit-transform: scale(1.1);
+              -moz-transform: scale(1.1);
+              -o-transform: scale(1.1);
+              -ms-transform: scale(1.1);
+              transform: scale(1.1);
+          }
+          50% {
+              -webkit-transform: scale(0.8);
+              -moz-transform: scale(0.8);
+              -o-transform: scale(0.8);
+              -ms-transform: scale(0.8);
+              transform: scale(0.8);
+          }
+          100% {
+              -webkit-transform: scale(1);
+              -moz-transform: scale(1);
+              -o-transform: scale(1);
+              -ms-transform: scale(1);
+              transform: scale(1);
+          }
+      }
+      @-moz-keyframes pulse {
+          0% {
+              -moz-transform: scale(1.1);
+              transform: scale(1.1);
+          }
+          50% {
+              -moz-transform: scale(0.8);
+              transform: scale(0.8);
+          }
+          100% {
+              -moz-transform: scale(1);
+              transform: scale(1);
+          }
+      }
+      @-webkit-keyframes "pulse" {
+          0% {
+              -webkit-transform: scale(1.1);
+              transform: scale(1.1);
+          }
+          50% {
+              -webkit-transform: scale(0.8);
+              transform: scale(0.8);
+          }
+          100% {
+              -webkit-transform: scale(1);
+              transform: scale(1);
+          }
+      }
+      @-ms-keyframes "pulse" {
+          0% {
+              -ms-transform: scale(1.1);
+              transform: scale(1.1);
+          }
+          50% {
+              -ms-transform: scale(0.8);
+              transform: scale(0.8);
+          }
+          100% {
+              -ms-transform: scale(1);
+              transform: scale(1);
+          }
+      }
+      /*partial*/
+      #tree {
+          font-family: Meta-Medium;
+      }
+      .header-container{
+        /*text-align: center;
+        color: #513278;
+        padding: 5px 0;
+        border-top: 5px solid #feb834;
+        background: rgba(255, 255, 255, 0.9);
+        position: fixed;
+        width: 100%;
+        -webkit-box-shadow: 0 0 15px -2px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 0 0 15px -2px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 0 15px -2px rgba(0, 0, 0, 0.4);
+        z-index: 9999;*/
+        position: relative;
+        display: block;
+        width: 320px;
+        margin: 0 auto;
+        color: #e23e89;
+        padding: 5px 0;
+        background: rgba(255, 255, 255, 0.9);
+        min-height: 80px;
+        text-align: center;
+        -webkit-box-shadow: 0 0 15px -2px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 0 0 15px -2px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 0 15px -2px rgba(0, 0, 0, 0.4);
+
+      }
+      .name{
+        text-align: center;
+        padding: 10px 0;
+        font-family: Meta-Bold,Meta-Medium;
+        font-size: 1.7em;
+        /*text-shadow: 3px 0px #cdcdcd;*/
+        display: inline-block;
+      }
+      img{
+        display: inline-block;
+      }
+      .sun .circle{
+            animation: rotation 25s infinite linear;
+            -webkit-animation: rotation 25s infinite linear;
+            /*-webkit-animation:spin 25s linear infinite;*/
+            /*-moz-animation:spin 25s linear infinite;*/
+            /*animation:spin 25s linear infinite;*/
+            position: absolute;
+            top: 7%;
+            width: 4%;
+            left: 3%;
+      }
+      html{
+        
+        /*background: url(/graphDemo/images/family-logo1.png);*/
+        background: url(/graphDemo/images/background2.png);
+        /*background: url(/graphDemo/images/cream-pixels.png);*/
+        height: 100%;
+        width: 100%;
+        position: fixed;
+      }
+      .pulse{
+        -webkit-animation: pulse 1s linear infinite;
+        -moz-animation: pulse 1s linear infinite;
+        -ms-animation: pulse 1s linear infinite;
+        animation: pulse 1s linear infinite;
+        vertical-align: middle;
+        margin-top: -5px;
+        
+      }
+      .pulse-msg{
+        text-align: center;
+        font-family: Meta-Bold,Meta-Medium;
+        color: #513278;
+      }
+      ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #513278;
+        opacity: 1; /* Firefox */
+        font-family: Meta-Medium;
+      }
+      input{
+        font-family: Meta-Medium;
+      }
+      .rotatecircle1{
+        top: -59px;
+        left: -109px;
+      }
+      .rotatecircle2{
+        top: -59px;
+        right: -109px;
+      }
+      .circle-rotate{
+        z-index: -1;
+        -webkit-animation: rotation 50s infinite linear;
+        position: absolute;
+      }
+      #tree-svg{
+          /*margin-top: 100px !important;*/
+          cursor: pointer;
+        }
+      @media screen and (max-width: 1024px) {
+        .header-container{
+          width: 230px;
+        }
+        .rotatecircle1{
+          /*left: -63px;*/
+        }
+        .rotatecircle2{
+          /*right: -63px;*/
+        }
+        #tree-svg{
+          /*margin-top: 120px !important;*/
+        }
+        #search-box{
+          top: 59px !important;
+          right: 33px !important;
+          width: 75% !important;
+          max-width: 300px;
+        }
+        #search-icon{
+          top: 59px !important;
+          right: 33px !important;
+        }
+      }
+    </style>  
+  </head>
+  <body>
+    
+    <link href="https://fonts.googleapis.com/css?family=Gochi+Hand" rel="stylesheet">
+    <header>
+      <!-- <img src="/graphDemo/images/family-logo.png" width="200" height="200" alt="logo"> -->
+     <!--  <div class='sun'>
+        <img alt="" class="circle loading bg" src="/graphDemo/images/sun.png">
+      </div> -->
+      <div class='header-container'>
+        <img id="rotating-left" class="circle-rotate rotatecircle1" src="/graphDemo/images/circle1.png">
+        <img id="rotating-right" class="circle-rotate rotatecircle2" src="/graphDemo/images/circle2.png">
+        <div class='name'>Bhutada Family Tree</div>
+        <div class="pulse-msg">Design with <img class="pulse" src="/graphDemo/images/heart.png"> by AnalytIQ</div>
+      </div>
+      
+    </header>
+    
+    <!-- <div>I wish I had a Family tree.</div>
+    <div>Get In My Family tree.</div>
+    <div>All you need is Family tree.</div>
+    <div>Bigger. Better. Family tree.</div>
+    <div>Family tree the river of life.</div>
+    <div></div>
+    <div></div> -->
+
+    <div id="tree"></div>
+    
+    <script src="/graphDemo/scripts/orgChart.js"></script>
+    <script src="/graphDemo/scripts/demo1.js"></script>
+  </body>
+</html>
